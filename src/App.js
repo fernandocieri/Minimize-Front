@@ -1,8 +1,8 @@
-
+import MainView from "./components/mainView/mainView";
 
 function App() {
   return (
-    <div>hello world</div>
+    <MainView />
   );
 }
 
