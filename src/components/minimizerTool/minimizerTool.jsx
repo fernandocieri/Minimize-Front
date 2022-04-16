@@ -20,12 +20,7 @@ export default function MinimizerTool() {
             message: 'can only be lowercase and separated by hyphens'
         }
     }
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        defaultValues: {
-            url: '',
-            customName: 'minimize'
-        }
-    });
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     function copyToClipboard() {
         navigator.clipboard.writeText(minimizedUrl);
