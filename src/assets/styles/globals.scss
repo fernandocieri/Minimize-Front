@@ -58,3 +58,7 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
     -webkit-text-fill-color: $dark-paragraph;
 }
+
+.error-message {
+    color: red;
+}
