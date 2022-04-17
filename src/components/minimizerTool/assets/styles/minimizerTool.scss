@@ -1,0 +1,67 @@
+.action-button {
+    width: 10rem;
+    height: 4rem;
+    background-color: $highlight;
+    border: 0px;
+    color: $white;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.minimizer-tool-wrapper {
+    width: 60rem;
+    background-color: $light-blue;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.minimizer-tool {
+    margin-bottom: 2.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.narrow-title {
+    width: 18rem;
+    margin-bottom: 3rem;
+    color: $dark-blue;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.input-wrapper,
+.fake-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.small-label {
+    color: $dark-blue;
+    font-weight: bold;
+}
+
+.basic-input {
+    width: 30rem;
+    height: 4rem;
+}
+
+.fake-input {
+    min-width: 30rem;
+    width: fit-content;
+    height: 4rem;
+    background-color: $white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: center;
+}
+
+.button-input {
+    display: flex;
+    flex-direction: row;
+}
