@@ -25,14 +25,6 @@
     align-items: center;
 }
 
-.narrow-title {
-    width: 18rem;
-    margin-bottom: 3rem;
-    color: $dark-blue;
-    font-size: 3rem;
-    text-align: center;
-}
-
 .input-wrapper,
 .fake-input {
     display: flex;
@@ -59,9 +51,4 @@
     padding-left: 1rem;
     padding-right: 1rem;
     justify-content: center;
-}
-
-.button-input {
-    display: flex;
-    flex-direction: row;
 }
