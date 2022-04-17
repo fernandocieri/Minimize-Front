@@ -3,23 +3,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+import useFormValidation from "../hooks/useFormValidation";
+
 export default function MinimizerTool() {
     const [minimizedUrl, setMinimizedUrl] = useState();
     const minimizeApiUrl = process.env.REACT_APP_MINIMIZE_API_URL;
-    const validations = {
-        required: {
-            value: true,
-            message: 'this is required'
-        },
-        url: {
-            value: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
-            message: 'invalid format'
-        },
-        customName: {
-            value: /^[a-z]+(-[a-z]+)*$/,
-            message: 'can only be lowercase and separated by hyphens'
-        }
-    }
+    const validations = useFormValidation
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     function copyToClipboard() {
