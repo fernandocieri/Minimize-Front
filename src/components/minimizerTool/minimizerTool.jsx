@@ -27,11 +27,13 @@ export default function MinimizerTool() {
     }
 
     const toolFeedback = (
-        <>
+        <div className='fake-input-wapper'>
             <p className='small-label'>Here you go!</p>
-            <div>{minimizedUrl}</div>
-            <button onClick={copyToClipboard}>Copy!</button>
-        </>
+            <div className='button-input'>
+                <div className='fake-input'>{minimizedUrl}</div>
+                <button className='action-button' onClick={copyToClipboard}>Copy!</button>
+            </div>
+        </div>
     )
 
     function removeEmptyFields(data) {
@@ -49,20 +51,24 @@ export default function MinimizerTool() {
     }
 
     return (
-        <section className="minimizer-tool">
-            <h2>Get started inmediately</h2>
-            <form onSubmit={handleSubmit(minimize)}>
-                <label className='small-label' htmlFor='url-input'>Paste the URL to be shortened</label>
-                <input className='basic-input' type='text' id='url-input' placeholder='your loooong url' required
-                    {...register('url', { required: { ...validations.required }, pattern: { ...validations.url } })} />
-                <sub className='error-message'>{errors.url?.message}</sub>
+        <section className="minimizer-tool-wrapper">
+            <h2 className='narrow-title'>Get started inmediately</h2>
+            <form onSubmit={handleSubmit(minimize)} className='minimizer-tool'>
+                <div className='input-wrapper'>
+                    <label className='small-label' htmlFor='url-input'>Paste the URL to be shortened</label>
+                    <input className='basic-input' type='text' id='url-input' placeholder='your loooong url' required
+                        {...register('url', { required: { ...validations.required }, pattern: { ...validations.url } })} />
+                    <sub className='error-message'>{errors.url?.message}</sub>
+                </div>
 
-                <label className='small-label' htmlFor='name-input'>Add a custom name to the short URL</label>
-                <input className='basic-input' type='text' id='name-input' placeholder='best-name'
-                    {...register('customName', { pattern: { ...validations.customName } })} />
-                <sub className='error-message'>{errors.customName?.message}</sub>
+                <div className='input-wrapper'>
+                    <label className='small-label' htmlFor='name-input'>Add a custom name to the short URL</label>
+                    <input className='basic-input' type='text' id='name-input' placeholder='best-name'
+                        {...register('customName', { pattern: { ...validations.customName } })} />
+                    <sub className='error-message'>{errors.customName?.message}</sub>
+                </div>
 
-                <button type='submit'>Minimize!</button>
+                <button type='submit' className='action-button'>Minimize!</button>
             </form>
 
             {minimizedUrl ? toolFeedback : <></>}
