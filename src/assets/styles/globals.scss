@@ -1,5 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 $dark-blue: #094067;
 $light-blue: #d8eefe;
 $highlight: #3da9fc;
 $white: #fffffe;
 $paragraph: #5f6c7b;
+$dark-paragraph: #414d5a;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    transition-duration: 0.3s;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f4f4;
+}
+
+input {
+    background-color: $white;
+    color: $dark-paragraph;
+    font-size: 1.6rem;
+    border: 0px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid $highlight;
+    color: $dark-paragraph;
+}
+
+input:focus-within {
+    background-color: $white;
+    color: $dark-paragraph;
+}
+
+input::placeholder {
+    color: $paragraph;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: $dark-paragraph;
+}
