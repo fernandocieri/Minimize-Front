@@ -8,7 +8,6 @@ import HandleApiError from "../hooks/handleApiError";
 
 export default function UrlPerformance() {
     const [urlClicks, setUrlClicks] = useState();
-    const [urlNotMinimized, setUrlNotMinimized] = useState(false);
     const notFound = 404;
     const [apiError, setApiError, apiErrorRender] = HandleApiError();
     const validations = useFormValidation();
@@ -17,7 +16,7 @@ export default function UrlPerformance() {
     const urlClicksRender = (
         <div className='row-display'>
             <div className='urlClicks'>{urlClicks}</div>
-            <div className='clicks-unit'>clicks</div>
+            <div className='clicks-unit'>{urlClicks === 1 ? 'click' : 'clicks'}</div>
         </div>
     )
 
