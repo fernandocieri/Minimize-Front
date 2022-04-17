@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import useFormValidation from "../hooks/useFormValidation";
+import HandleApiError from "../hooks/handleApiError";
 
 export default function MinimizerTool() {
     const [minimizedUrl, setMinimizedUrl] = useState();
     const minimizeApiUrl = process.env.REACT_APP_MINIMIZE_API_URL;
-    const validations = useFormValidation
+    const validations = useFormValidation();
+    const [apiError, setApiError, apiErrorRender] = HandleApiError();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     function copyToClipboard() {
@@ -18,7 +20,7 @@ export default function MinimizerTool() {
     const toolFeedback = (
         <div className='fake-input-wapper'>
             <p className='small-label'>Here you go!</p>
-            <div className='button-input'>
+            <div className='row-display'>
                 <div className='fake-input'>{minimizedUrl}</div>
                 <button className='action-button' onClick={copyToClipboard}>Copy!</button>
             </div>
@@ -35,8 +37,15 @@ export default function MinimizerTool() {
 
     async function minimize(userInput) {
         removeEmptyFields(userInput);
-        const response = await axios.post(`${minimizeApiUrl}`, userInput);
-        setMinimizedUrl(response.data);
+        if (apiError.render) {
+            setApiError.render(false);
+        }
+        try {
+            const response = await axios.post(`${minimizeApiUrl}`, userInput);
+            setMinimizedUrl(response.data);
+        } catch (error) {
+            setApiError({ render: true, message: "something's wrong. Try again later." });
+        }
     }
 
     return (
@@ -48,6 +57,7 @@ export default function MinimizerTool() {
                     <input className='basic-input' type='text' id='url-input' placeholder='your loooong url' required
                         {...register('url', { required: { ...validations.required }, pattern: { ...validations.url } })} />
                     <sub className='error-message'>{errors.url?.message}</sub>
+                    {apiErrorRender}
                 </div>
 
                 <div className='input-wrapper'>
