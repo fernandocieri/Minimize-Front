@@ -45,7 +45,7 @@ export default function UrlPerformance() {
 
             <form onSubmit={handleSubmit(getUrlClicks)} className='performance-tool'>
                 <div className='row-display'>
-                    <input className='basic-input button-input' type='text' id='url-performance-input' placeholder='your minimized url' required
+                    <input className='basic-input button-input' type='text' id='url-performance-input' placeholder='your-minimized-url' required
                         {...register('url', { required: { ...validations.required } })} />
                     <button type='submit' className='action-button'>Assess!</button>
                 </div>
