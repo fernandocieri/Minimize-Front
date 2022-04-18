@@ -15,7 +15,7 @@ $dark-paragraph: #414d5a;
 }
 
 html {
-    font-size: 10px;
+    font-size: 0.833vw;
 }
 
 body {
@@ -23,6 +23,13 @@ body {
     font-size: 1.6rem;
     font-family: "Open Sans", sans-serif;
     background-color: #f8f4f4;
+}
+
+h1 {
+    width: 50rem;
+    margin-bottom: 3rem;
+    color: $dark-blue;
+    font-size: 4rem;
 }
 
 input {
