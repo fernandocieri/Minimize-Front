@@ -10,7 +10,11 @@ export default function useFormValidation() {
         },
         customName: {
             value: /^[a-z]+(-[a-z]+)*$/,
-            message: 'can only be lowercase and separated by hyphens'
+            message: 'only lowercase letters and separated by hyphens'
+        },
+        maxLenght: {
+            value: 10,
+            message:'10 characters max'
         }
     }
     return validations;

@@ -63,7 +63,7 @@ export default function MinimizerTool() {
                 <div className='input-wrapper'>
                     <label className='small-label' htmlFor='name-input'>Add a custom name to the short URL</label>
                     <input className='basic-input' type='text' id='name-input' placeholder='best-name'
-                        {...register('customName', { pattern: { ...validations.customName } })} />
+                        {...register('customName', { pattern: { ...validations.customName }, maxLength: { ...validations.maxLenght } })} />
                     <sub className='error-message'>{errors.customName?.message}</sub>
                 </div>
 
