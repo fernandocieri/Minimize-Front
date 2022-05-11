@@ -54,7 +54,7 @@ export default function MinimizerTool() {
             <form onSubmit={handleSubmit(minimize)} className='minimizer-tool'>
                 <div className='input-wrapper'>
                     <label className='small-label' htmlFor='url-input'>Paste the URL to be shortened</label>
-                    <input className='basic-input' type='text' id='url-input' placeholder='your loooong url' required
+                    <input className='basic-input' type='text' id='url-input' placeholder='your-loooong-url' required
                         {...register('url', { required: { ...validations.required }, pattern: { ...validations.url } })} />
                     <sub className='error-message'>{errors.url?.message}</sub>
                     {apiErrorRender}
@@ -63,7 +63,7 @@ export default function MinimizerTool() {
                 <div className='input-wrapper'>
                     <label className='small-label' htmlFor='name-input'>Add a custom name to the short URL</label>
                     <input className='basic-input' type='text' id='name-input' placeholder='best-name'
-                        {...register('customName', { pattern: { ...validations.customName } })} />
+                        {...register('customName', { pattern: { ...validations.customName }, maxLength: { ...validations.maxLenght } })} />
                     <sub className='error-message'>{errors.customName?.message}</sub>
                 </div>
 
