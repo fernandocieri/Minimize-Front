@@ -4,36 +4,37 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import useFormValidation from "../hooks/useFormValidation";
-import HandleApiError from "../hooks/handleApiError";
+import useHandleApiError from "../hooks/useHandleApiError";
 
 export default function UrlPerformance() {
     const [urlClicks, setUrlClicks] = useState();
-    const notFound = 404;
-    const [apiError, setApiError, apiErrorRender] = HandleApiError();
+    const [apiError, setApiError, apiErrorRender] = useHandleApiError();
     const validations = useFormValidation();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const minimizeApiUrl = process.env.REACT_APP_MINIMIZE_API_URL;
 
     const urlClicksRender = (
         <div className='row-display'>
             <div className='urlClicks'>{urlClicks}</div>
-            <div className='clicks-unit'>{urlClicks === 1 ? 'click' : 'clicks'}</div>
+            <div className='clicks-unit'>{(urlClicks === 1) ? 'click' : 'clicks'}</div>
         </div>
     )
 
     async function getUrlClicks(userInput) {
         try {
-            const response = await axios.get(`${userInput.url}/clicks`);
+            const domain = 'http://localhost:3000/';
+            const formattedShortUrl = userInput.url.split(domain)[1];
+            const response = await axios.get(`${minimizeApiUrl}/${formattedShortUrl}/clicks`);
             if (apiError.render) {
                 setApiError({ ...apiError, render: false })
             }
             setUrlClicks(response.data);
         } catch (error) {
-            if (error.response === undefined) {
-                setApiError({ render: true, message: 'only works with minimized URLs.' });
-            } else if (error.response.status === notFound) {
-                setApiError({ render: true, message: "this URL doesn't exists." });
+            const notFound = 404;
+            if (error.response.status === notFound) {
+                setApiError({ render: true, message: "This URL was not Minimized®." });
             } else {
-                setApiError({ render: true, message: "something's wrong. Try again later." });
+                setApiError({ render: true, message: "Something's wrong. Try again later." });
             }
         }
     }
@@ -41,7 +42,10 @@ export default function UrlPerformance() {
     return (
         <section className='url-performance-wrapper'>
             <h2 className='broad-title'>Assess the performance of your URL</h2>
-            <p className='section-explanation'>We track how many clicks your minimized URLs get. Want to get a glimpse of that? Paste your short url below.</p>
+            <p className='section-explanation'>
+                We track how many clicks your minimized URLs get.
+                Want to get a glimpse of that? Paste your short url below.
+            </p>
 
             <form onSubmit={handleSubmit(getUrlClicks)} className='performance-tool'>
                 <div className='row-display'>
