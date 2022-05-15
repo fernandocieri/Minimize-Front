@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import useFormValidation from "../hooks/useFormValidation";
-import HandleApiError from "../hooks/handleApiError";
+import useHandleApiError from "../hooks/useHandleApiError";
 
 export default function MinimizerTool() {
     const [minimizedUrl, setMinimizedUrl] = useState();
     const minimizeApiUrl = process.env.REACT_APP_MINIMIZE_API_URL;
     const validations = useFormValidation();
-    const [apiError, setApiError, apiErrorRender] = HandleApiError();
+    const [apiError, setApiError, apiErrorRender] = useHandleApiError();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     function copyToClipboard() {

@@ -1,0 +1,24 @@
+.url-not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .action-button {
+        width: 40rem;
+        height: 8rem;
+        font-size: 3rem;
+        margin-top: 2rem
+    }
+}
+
+.not-found-notice {
+    font-size: 6rem;
+}
+
+.not-found-message {
+    width: 100rem;
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
