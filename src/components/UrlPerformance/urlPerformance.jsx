@@ -22,8 +22,7 @@ export default function UrlPerformance() {
 
     async function getUrlClicks(userInput) {
         try {
-            const domain = 'http://localhost:3000/';
-            const formattedShortUrl = userInput.url.split(domain)[1];
+            const formattedShortUrl = userInput.url.split(process.env.REACT_APP_MINIMIZE_FRONT_URL)[1];
             const response = await axios.get(`${minimizeApiUrl}/${formattedShortUrl}/clicks`);
             if (apiError.render) {
                 setApiError({ ...apiError, render: false })
