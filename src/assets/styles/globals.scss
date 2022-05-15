@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+$dark-blue: #094067;
+$light-blue: #d8eefe;
+$highlight: #3da9fc;
+$white: #fffffe;
+$paragraph: #5f6c7b;
+$dark-paragraph: #414d5a;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    transition-duration: 0.3s;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.833vw;
+}
+
+body {
+    padding: 20px;
+    font-size: 1.6rem;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8f4f4;
+}
+
+h1 {
+    width: 50rem;
+    margin-bottom: 3rem;
+    color: $dark-blue;
+    font-size: 4rem;
+}
+
+input {
+    background-color: $white;
+    color: $dark-paragraph;
+    font-size: 1.7rem;
+    border: 0px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid $highlight;
+    color: $dark-paragraph;
+}
+
+input:focus-within {
+    background-color: $white;
+    color: $dark-paragraph;
+}
+
+input::placeholder {
+    color: $paragraph;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: $dark-paragraph;
+}
+
+button {
+    cursor: pointer;
+}
+
+p {
+    color: $paragraph;
+}
+
+.error-message {
+    color: red;
+}
+
+.narrow-title {
+    width: 18rem;
+    margin-bottom: 3rem;
+    color: $dark-blue;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.broad-title {
+    margin-bottom: 3rem;
+    color: $dark-blue;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.row-display {
+    display: flex;
+    flex-direction: row;
+}
