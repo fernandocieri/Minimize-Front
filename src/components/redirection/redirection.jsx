@@ -10,7 +10,7 @@ export default function Redirection() {
 
   async function getOriginalUrl() {
     try {
-      const response = await axios.get(`${minimizeApiUrl}/${shortUrl}`);
+      const response = await axios.get(`${minimizeApiUrl}${shortUrl}`);
       if (response.data) {
         window.location.href = response.data;
       } else {
